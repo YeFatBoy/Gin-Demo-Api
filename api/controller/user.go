@@ -83,6 +83,38 @@ func UserLogin(c *gin.Context) {
 	})
 }
 
+func UserInfo(c *gin.Context) {
+
+	//验证
+	type Query struct {
+		Id int `uri:"id" binding:"required"`
+	}
+	var query Query
+	if err := c.ShouldBindUri(&query); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"status_code": http.StatusBadRequest,
+			"message":     err.Error(),
+		})
+		return
+	}
+
+	var Info user.User
+	err := models.Db.Where("uid = ?", query.Id).Find(&Info).Error
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"status_code": http.StatusBadRequest,
+			"message":     err.Error(),
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"status_code": http.StatusOK,
+		"message":     "success",
+		"data":        Info,
+	})
+}
+
 func UserList(c *gin.Context) {
 
 	//验证
