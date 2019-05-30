@@ -47,6 +47,8 @@ func InitRouter() *gin.Engine {
 		v1.POST("/users", controller.AddUser)          //增加用户
 		v1.PATCH("/users/:id", controller.EditUser)    //修改用户
 		v1.DELETE("/users/:id", controller.DeleteUser) //删除用户
+
+		v1.GET("categorys",controller.CategoryList) //分类列表
 	}
 
 	return router
