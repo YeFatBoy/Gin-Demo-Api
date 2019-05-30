@@ -22,12 +22,14 @@ func InitRouter() *gin.Engine {
 	router := gin.Default()
 	router.NoRoute(func(c *gin.Context) {
 		c.JSON(http.StatusNotFound, gin.H{
-			"StatusNotFound": "404",
+			"status_code": http.StatusNotFound,
+			"message":     "StatusNotFound",
 		})
 	})
 	router.NoMethod(func(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"StatusBadRequest": "400",
+			"status_code": http.StatusBadRequest,
+			"message":     "StatusBadRequest",
 		})
 	})
 
@@ -35,16 +37,16 @@ func InitRouter() *gin.Engine {
 	jwt := router.Group("/api/v1/jwt")
 	jwt.Use()
 	{
-		jwt.GET("/login",controller.UserLogin) //用户登录
+		jwt.GET("/login", controller.UserLogin) //用户登录
 	}
 	//v1版本接口
 	v1 := router.Group("/api/v1")
 	v1.Use(middlewares.JWTAuth())
 	{
-		v1.GET("/users",controller.UserList) //用户列表
-		v1.POST("/users",controller.AddUser) //增加用户
-		v1.PATCH("/users/:id",controller.EditUser) //修改用户
-		v1.DELETE("/users/:id",controller.DeleteUser) //删除用户
+		v1.GET("/users", controller.UserList)          //用户列表
+		v1.POST("/users", controller.AddUser)          //增加用户
+		v1.PATCH("/users/:id", controller.EditUser)    //修改用户
+		v1.DELETE("/users/:id", controller.DeleteUser) //删除用户
 	}
 
 	return router

@@ -10,5 +10,3 @@ func main() {
 	Router := routers.InitRouter()
 	Router.Run()
 }
-
-

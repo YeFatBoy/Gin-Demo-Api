@@ -7,10 +7,10 @@
 package user
 
 type User struct {
-	Id        int64     `gorm:"column:id" json:"id"`
-	Uid       int64     `gorm:"column:uid" json:"uid"`
-	UserName  string    `gorm:"column:username" json:"username"`
-	Img       string    `gorm:"column:img" json:"img"`
+	Id       int64  `gorm:"column:id" json:"id"`
+	Uid      int64  `gorm:"column:uid" json:"uid"`
+	UserName string `gorm:"column:username" json:"username"`
+	Img      string `gorm:"column:img" json:"img"`
 	//DeletedAt time.Time `gorm:"column:deleted_at" json:"deleted_at"`
 }
 

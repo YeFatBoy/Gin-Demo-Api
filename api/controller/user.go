@@ -39,7 +39,7 @@ func UserLogin(c *gin.Context) {
 
 	var User user.User
 	err := models.Db.Where("username = ? and uid = ?", query.UserName, query.Password).Find(&User).Error
-	if err != nil{
+	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"status_code": http.StatusBadRequest,
 			"message":     "用户不存在",

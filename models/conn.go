@@ -14,7 +14,7 @@ import (
 
 var Db *gorm.DB
 
-func init(){
+func init() {
 	//读取配置文件
 	Setting := config.Yaml.GetStringMap("Mysql")
 	Db, _ = gorm.Open("mysql", Setting["user"].(string)+":"+Setting["password"].(string)+"@tcp("+Setting["host"].(string)+")/"+Setting["database"].(string)+"?charset=utf8mb4&parseTime=True&loc=Local")
