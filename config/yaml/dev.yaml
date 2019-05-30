@@ -1,0 +1,13 @@
+##
+Author: "SuperShuYe"
+
+##
+AppName: "GinApi"
+
+##
+Mysql:
+  Host: "127.0.0.1"
+  User: "root"
+  Password: "1q2w3e4r"
+  Port: "3306"
+  DATABASE: "jmf_sns"
