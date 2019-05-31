@@ -44,7 +44,7 @@ func InitRouter() *gin.Engine {
 	v1.Use(middlewares.JWTAuth())
 	{
 		v1.GET("/users", controller.UserList)          //用户列表
-		v1.GET("/users/:id", controller.UserInfo)          //用户详情
+		v1.GET("/users/:id", controller.UserInfo)       //用户详情
 		v1.POST("/users", controller.AddUser)          //增加用户
 		v1.PATCH("/users/:id", controller.EditUser)    //修改用户
 		v1.DELETE("/users/:id", controller.DeleteUser) //删除用户
